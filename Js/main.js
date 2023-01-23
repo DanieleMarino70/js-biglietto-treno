@@ -10,36 +10,40 @@
 
 
 // CONSIDERIAMO DI PRENDERE KM IN DECIMALE
-const km = parseFloat(prompt("Quanti Chilometri devi percorrere?")).toFixed(2);
-//console.log(parseFloat(km));
-//console.log(typeof parseFloat(km));
+let km = parseFloat(prompt("Quanti Chilometri devi percorrere?")).toFixed(2);
+
 
 // CONSIDERIAMO DI PRENDERE L'ETA' DELL'UTENTE
 const userAge = parseInt(prompt("Quanti anni hai?"));
-//console.log(userAge);
-//console.log(typeof userAge);
 
-// CONSIDERIAMO IL PREZZO NON DEFINITO E IL PREZZO SCONTATO NON DEFINITO COME VARIABILI GLOB
-// COSI NON VADO SEMPRE A DICHIARARLI NEL BLOCCO 
-let price;
-let discountedPrice;
+
+// Check
+let isValid = true;
+if(isNaN(parseFloat(km)) || isNaN(userAge)){
+    isValid = false;
+} 
+
+
+// CONSIDERIAMO IL PREZZO E IL PREZZO SCONTATO COME VARIABILI GLOB
+// COSI DA NON DICHIARARLI SEMPRE NEL BLOCCO 
+let price = 0;
+let discountedPrice = 0;
 
 
 // SICCOME IL .TOFIXED RITORNA UNA STRINGA, A PRICE UTILIZZO DI NUOVO IL PARSEFLOAT SU KM PER AVERE IN RITORNO UN NUM
-//SE L'UTENTE E' MINORENNE
-if (userAge < 18){
-    price = 0.21 * parseFloat(km);
-    discountedPrice = price - ((price * 20) / 100);
-    alert("UTENTE MINORENNE - Il prezzo finale del biglietto è: " + discountedPrice.toFixed(2));
-}
-// SE L'UNTENTE E' OVER 65
-else if(userAge > 64){
-    price = 0.21 * parseFloat(km);
-    discountedPrice = price - ((price * 40) / 100);
-    alert("UTENTE ANZIANO - Il prezzo finale del biglietto è: " + discountedPrice.toFixed(2));
-}
-//SE L'UTENTE E' IN ETA' ADULTA
-else{
-    price = 0.21 * parseFloat(km);
-    alert("UTENTE ADULTO - Il prezzo finale del biglietto è: " + price.toFixed(2));
-}
+if(isValid){
+    if (userAge < 18){
+        price = 0.21 * parseFloat(km);
+        discountedPrice = price - ((price * 20) / 100);
+        alert("UTENTE MINORENNE - Il prezzo finale del biglietto è: " + discountedPrice.toFixed(2));
+    }
+    else if(userAge > 64){
+        price = 0.21 * parseFloat(km);
+        discountedPrice = price - ((price * 40) / 100);
+        alert("UTENTE ANZIANO - Il prezzo finale del biglietto è: " + discountedPrice.toFixed(2));
+    }
+    else{
+        price = 0.21 * parseFloat(km);
+        alert("UTENTE ADULTO - Il prezzo finale del biglietto è: " + price.toFixed(2));
+    }
+}else (alert("Inserisci correttamente i dati"));
