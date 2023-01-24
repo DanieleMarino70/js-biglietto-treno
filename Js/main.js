@@ -10,7 +10,7 @@
 
 
 // CONSIDERIAMO DI PRENDERE KM IN DECIMALE
-let km = parseFloat(prompt("Quanti Chilometri devi percorrere?")).toFixed(2);
+const km = parseFloat(prompt("Quanti Chilometri devi percorrere?")).toFixed(2);
 
 
 // CONSIDERIAMO DI PRENDERE L'ETA' DELL'UTENTE
